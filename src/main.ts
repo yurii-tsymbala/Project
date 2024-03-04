@@ -1,6 +1,22 @@
-import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { AppComponent } from './app/components/app/app.component';
+/* eslint-disable no-console */
+import { AppModule } from './app/app.module'
+import { environment } from './environments/environment'
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+import { enableProdMode } from '@angular/core'
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic'
+
+if (environment.production) {
+  enableProdMode()
+}
+
+function bootstrap(): void {
+  platformBrowserDynamic()
+    .bootstrapModule(AppModule)
+    .catch((err) => console.error(err))
+}
+
+if (document.readyState === 'complete') {
+  bootstrap()
+} else {
+  document.addEventListener('DOMContentLoaded', bootstrap)
+}

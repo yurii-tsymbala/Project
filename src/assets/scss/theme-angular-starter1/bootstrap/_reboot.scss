@@ -1,0 +1,113 @@
+@import 'variables';
+
+:root {
+  --bs-link-color-rgb: inherit;
+  --bs-link-hover-color-rgb: inherit;
+}
+
+body {
+  &.page-404:not(.contrast) {
+    background: linear-gradient(101deg, #9be8be 0%, #fff1b8 100%);
+  }
+}
+
+html,
+body {
+  background-color: white;
+}
+
+body {
+  font-size: rem-calc(16px);
+  line-height: 150%;
+  margin: 0 auto;
+  overflow-y: scroll;
+  letter-spacing: 0;
+  text-underline-offset: rem-calc(3px);
+  @include media-breakpoint-down(sm) {
+    font-size: rem-calc(16px);
+    line-height: 114%;
+  }
+
+  & > app-root {
+    display: block;
+  }
+
+  &.contrast {
+    img,
+    iframe,
+    video {
+      filter: grayscale(1);
+    }
+
+    *:focus-visible {
+      outline: 2px solid black;
+    }
+  }
+}
+img {
+  max-width: 100%;
+  color: transparent;
+}
+
+ul,
+ol {
+  &[class]:not(.default_reboot) {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+p {
+  &:not(:last-child) {
+    margin-bottom: 1em;
+  }
+  &:last-child,
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+sup {
+  top: -0.7em;
+  font-size: rem-calc(10px);
+}
+
+th {
+  font-weight: 400;
+}
+
+dd {
+  margin: 0;
+}
+
+a,
+a:hover,
+.btn:hover {
+  -webkit-text-fill-color: currentColor !important;
+}
+
+.tdu-active {
+  text-decoration: none;
+  @include media-breakpoint-up(tb) {
+    &:hover,
+    &:focus-visible {
+      text-decoration: underline;
+    }
+  }
+}
+
+.root-overflow {
+  app-root {
+    overflow: hidden;
+  }
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: $font-family-primary;
+
+  body:not(.contrast) & {
+    outline: 0 !important;
+  }
+}

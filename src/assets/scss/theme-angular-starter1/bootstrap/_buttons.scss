@@ -1,0 +1,35 @@
+@import 'variables';
+
+.btn {
+  white-space: nowrap;
+  border: unset;
+  padding: 11px 28px;
+  font-size: rem-calc(14px);
+  line-height: 143%;
+  border-radius: 40px;
+  display: block;
+  width: fit-content;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    0.5s color,
+    0.5s background-color,
+    0.5s border-color,
+    0.5s opacity;
+  @include media-breakpoint-down(sm) {
+    padding: 12px 18px;
+    line-height: 114%;
+    font-size: rem-calc(14px);
+  }
+
+  &-black {
+    color: white;
+    background: black;
+  }
+
+  &.disabled,
+  &:disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+}

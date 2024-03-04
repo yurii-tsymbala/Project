@@ -1,0 +1,52 @@
+@import 'node_modules/bootstrap/scss/mixins';
+
+.dl-list {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  @include media-breakpoint-down(sm) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .item {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-bottom: 24px;
+    border-bottom: 2px solid #e7eef3;
+    word-break: break-word;
+    font-size: rem-calc(14px);
+    font-weight: 300;
+    line-height: 158%;
+    @include media-breakpoint-down(sm) {
+      padding-bottom: 16px;
+      @include h5;
+      margin: 0 !important;
+      display: block;
+    }
+
+    body.contrast & {
+      border-color: black;
+    }
+
+    &-label {
+      padding-right: 24px;
+      @include media-breakpoint-up(sm) {
+        max-width: 355px;
+      }
+      @include media-breakpoint-down(sm) {
+        @include h8;
+        opacity: 0.5;
+        letter-spacing: -0.02em;
+        margin-bottom: 13px;
+        body.contrast & {
+          opacity: 1;
+        }
+      }
+    }
+
+    &-data {
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,155 @@
+@import 'variables';
+
+.modal {
+  &-header {
+    border-bottom: none;
+  }
+
+  &-content {
+    border-radius: 40px;
+    border: none;
+    @include media-breakpoint-down(sm) {
+      border-radius: 24px;
+    }
+  }
+
+  &__body {
+    padding: 56px;
+    @include media-breakpoint-down(tb) {
+      padding: 48px;
+    }
+    @include media-breakpoint-down(sm) {
+      padding: 40px;
+    }
+  }
+
+  &__close-wrapper_absolute {
+    position: relative;
+
+    .close {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      @include media-breakpoint-down(sm) {
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+
+  &-xl {
+    max-width: 1050px;
+    @include media-breakpoint-down(tb) {
+      max-width: 648px;
+    }
+    @include media-breakpoint-down(sm) {
+      margin: 0;
+      max-width: 100%;
+    }
+
+    .modal-content {
+      @include media-breakpoint-down(sm) {
+        border: none;
+        border-radius: unset;
+      }
+      .modal__body {
+        padding: 88px 96px 88px 98px;
+        @include media-breakpoint-down(tb) {
+          padding: 55px;
+        }
+        @include media-breakpoint-down(sm) {
+          padding: 24px 24px 33px;
+        }
+
+        .close {
+          position: absolute;
+          top: -40px;
+          right: -48px;
+          @include media-breakpoint-down(tb) {
+            top: -15px;
+            right: -15px;
+          }
+          @include media-breakpoint-down(sm) {
+            top: 0;
+            right: 0;
+            z-index: 1;
+          }
+        }
+      }
+    }
+  }
+
+  &-xxl {
+    max-width: 1179px;
+  }
+
+  &-tb {
+    max-width: 592px;
+  }
+
+  &-sidebar-lg {
+    margin: 0;
+    max-width: 100%;
+
+    .modal-content {
+      border: none;
+      border-radius: unset;
+    }
+  }
+
+  &-sm {
+    @include media-breakpoint-down(tb) {
+      max-width: 501px;
+      margin: auto;
+    }
+    @include media-breakpoint-down(xs) {
+      max-width: 343px;
+    }
+  }
+}
+
+.backdrop-transparent {
+  opacity: 0 !important;
+  pointer-events: none;
+
+  & + ngb-modal-window {
+    z-index: 95;
+    .modal-content {
+      background: transparent;
+    }
+  }
+}
+
+.backdrop-grey.modal-backdrop.fade,
+.backdrop-grey.modal-backdrop.fade.show {
+  opacity: 0.7;
+
+  & + ngb-modal-window {
+    .modal-content {
+      background: unset;
+    }
+  }
+}
+
+.backdrop-black.modal-backdrop.fade,
+.backdrop-black.modal-backdrop.fade.show {
+  opacity: 1;
+
+  & + ngb-modal-window {
+    .modal-content {
+      background: unset;
+    }
+  }
+}
+
+.backdrop-white.modal-backdrop.fade,
+.backdrop-white.modal-backdrop.fade.show {
+  opacity: 1;
+  background-color: white;
+
+  & + ngb-modal-window {
+    .modal-content {
+      background: unset;
+    }
+  }
+}

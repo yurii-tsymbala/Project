@@ -1,0 +1,16 @@
+<main class="block__main">
+  <section class="block__wrapper" [appHttpCode]="404">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="block__text">
+            <h1 class="mb-1 mb-sm-2">404</h1>
+            <h2 class="mb-1 mb-sm-2">Такої сторінки не існує</h2>
+            <p class="h6 mb-3 mb-sm-5">Схоже, це неправильна адреса, або сторінка переїхала</p>
+            <a [routerLink]="'/'" class="btn btn-black">На головну</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
