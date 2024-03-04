@@ -1,0 +1,11 @@
+.template {
+    position: absolute;
+    top: 0;
+    opacity: 0.2;
+    pointer-events: none;
+    width: 100vw;
+}
+
+:host {
+    overflow-x: hidden;
+}
