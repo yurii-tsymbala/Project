@@ -8,8 +8,8 @@
 }
 
 .header-logo {
-  width: 187px;
-  height: 43.53px;
+  width: 108px;
+  height: 25.8px;
 }
 
 .header-present-btn {
@@ -33,15 +33,21 @@
   }
 
   span {
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 400;
     line-height: 24px;
-    letter-spacing: -0.02em;
+    letter-spacing: 0em;
     text-align: center;
+  }
+
+  .present-play {
+    width: 16.25px;
+    height: 23px;
+
   }
 }
 
-@media (min-width: 375px) and (max-width: 1024px) {
+@media (min-width: 320px) and (max-width: 1024px) {
   .header-container {
     padding-inline: 0px;
     margin-top: 27px;
@@ -52,21 +58,25 @@
     margin-top: 5px;
 
     img {
-      max-width: unset;
       width: 128px;
     }
   }
 
   .header-present-btn {
-    width: 217px;
-    height: 36px;
+    width: 159.99px;
+    height: 32px;
     left: 144px;
     padding: 4px 24px 4px 24px;
     border-radius: 27px;
     border: 1px;
     gap: 10px;
 
-    border: 2px solid black;
+    border: 1px solid black;
     border-radius: 48px;
+  }
+
+  .present-play {
+      width: 10.99px;
+      height: 15px;
   }
 }
