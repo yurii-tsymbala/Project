@@ -8,6 +8,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 export class HomePresentationComponent {
   @ViewChild('videoPlayer') videoPlayer!: ElementRef;
   isOpened: boolean = false;
+  isPaused: boolean = false;
 
   onPlay() {
     this.isOpened = true;
@@ -20,5 +21,6 @@ export class HomePresentationComponent {
   onPause() {
     const video: HTMLVideoElement = this.videoPlayer.nativeElement;
     video.paused ? video.play() : video.pause();
+    video.paused ? this.isPaused = true : this.isPaused = false;
   }
 }
