@@ -1,1 +1,9 @@
-<section>In Development mode</section>
+<section>
+  <div class="projects-container">
+    <div *ngFor="let project of projects; index as i" class="project">
+      <div class="counter">{{formattedIndex(i)}}</div>
+      <h3 class="date">{{project.date}}</h3>
+      <p *ngFor="let task of project.tasks" class="tasks"> {{task}} </p>
+    </div>
+  </div>
+</section>
