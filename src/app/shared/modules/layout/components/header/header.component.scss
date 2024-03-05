@@ -23,15 +23,6 @@
   border: 2px solid black;
   border-radius: 48px;
 
-  &:hover {
-    opacity: 1;
-    transform: scale(1.02);
-  }
-
-  &:active {
-    opacity: 0.5;
-  }
-
   span {
     font-size: 13px;
     font-weight: 400;
@@ -78,5 +69,18 @@
   .present-play {
       width: 10.99px;
       height: 15px;
+  }
+}
+
+@media all and (min-width: 1024px) {
+  .header-present-btn {
+    &:hover {
+      opacity: 1;
+      transform: scale(1.02);
+    }
+
+    &:active {
+      opacity: 0.5;
+    }
   }
 }
