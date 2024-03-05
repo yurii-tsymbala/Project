@@ -53,7 +53,7 @@
   }
 }
 
-@media (min-width: 320px) and (max-width: 1024px) {
+@include media-breakpoint-between(xs, tb) {
   .hero-container {
     display: flex;
     flex-direction: column;
@@ -108,9 +108,9 @@
       color: #fff;
     }
   }
-}
+  }
 
-@media all and (min-width: 1024px) {
+@include media-breakpoint-up(tb){
   .hero-play-btn {
     &:hover {
       opacity: 1;

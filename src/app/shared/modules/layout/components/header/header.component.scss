@@ -37,7 +37,7 @@
   }
 }
 
-@media (min-width: 320px) and (max-width: 1024px) {
+@include media-breakpoint-between(xs, tb) {
   .header-container {
     padding-inline: 0px;
     margin-top: 27px;
@@ -80,7 +80,7 @@
   }
 }
 
-@media all and (min-width: 1024px) {
+@include media-breakpoint-up(tb){
   .header-present-btn {
     &:hover {
       opacity: 1;
