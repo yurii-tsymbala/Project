@@ -1,4 +1,4 @@
-<section class="present-container">
+<section *ngIf="isPlaying; else video" class="present-container">
   <div class="info-container">
     <h1 class="title">Презентація наживо</h1>
     <h4 class="subtitle">11 березня, о 12:00</h4>
@@ -8,3 +8,9 @@
     <img src="/assets/img/icons/youtube-play.svg" />
   </button>
 </section>
+<ng-template #video>
+  <div class="video-container">
+    <video src="https://drive.google.com/file/d/1X1XaYLbYaWhJ3py5JmJGx7oogHT1UlsI/view" #videoPlayer>
+  </video>
+  </div>
+</ng-template>

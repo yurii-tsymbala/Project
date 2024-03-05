@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-presentation.component.scss']
 })
 export class HomePresentationComponent {
+  isPlaying: boolean = false;
+
+  play() {
+
+  }
+
+  pause() {
+    
+  }
 
 }
