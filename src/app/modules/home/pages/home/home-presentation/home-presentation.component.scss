@@ -7,17 +7,43 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 808px;
-  background-color: aquamarine;
+  height: 100vh;
+
+  background: url("/assets/img/present-bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  .button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    .player-btn {
+      width: 100px;
+      height: 50px;
+      background: #000000;
+      border-radius: 48px;
+      color: white;
+    }
+  }
+
+  video {
+    width: 90%;
+    height: 80%;
+    display: block;
+  }
 }
 
 .present-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 808px;
+  height: 100vh;
 
   background: url("/assets/img/present-bg.png");
   background-size: cover;

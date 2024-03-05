@@ -1,16 +1,22 @@
-<section *ngIf="isPlaying; else video" class="present-container">
+<section *ngIf="!isOpened; else video" class="present-container">
   <div class="info-container">
     <h1 class="title">Презентація наживо</h1>
     <h4 class="subtitle">11 березня, о 12:00</h4>
   </div>
 
-  <button class="present-play">
+  <button class="present-play" (click)="onPlay()">
     <img src="/assets/img/icons/youtube-play.svg" />
   </button>
 </section>
+
 <ng-template #video>
   <div class="video-container">
-    <video src="https://drive.google.com/file/d/1X1XaYLbYaWhJ3py5JmJGx7oogHT1UlsI/view" #videoPlayer>
+    <video #videoPlayer (click)="onPause()" autoplay controls>
+      <source src="/assets/video/diya.mp4" type="video/mp4">
   </video>
+  <div class="button-container">
+    <button class="player-btn" (click)="onPause()">{{videoPlayer.paused ? "Play" : "Pause"}}</button>
+    <button class="player-btn" (click)="onClose()">Close</button>
+  </div>
   </div>
 </ng-template>
