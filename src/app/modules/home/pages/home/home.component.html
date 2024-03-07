@@ -1,7 +1,9 @@
 <app-header></app-header>
 <main>
-  <app-home-hero></app-home-hero>
+  <app-home-hero (showPresent)="onPresentation()"></app-home-hero>
   <app-home-projects></app-home-projects>
-  <app-home-presentation></app-home-presentation>
+  <app-home-presentation class="presentation"></app-home-presentation>
+  <app-home-corruption></app-home-corruption>
+  <app-home-news></app-home-news>
 </main>
 <app-footer></app-footer>

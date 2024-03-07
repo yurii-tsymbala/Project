@@ -1,11 +1,10 @@
-import { Component } from '@angular/core'
-import { Meta, Title } from '@angular/platform-browser'
-import { ActivatedRoute } from '@angular/router'
+import { Component } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 
-import { BasePageComponent } from 'src/app/core/abstracts/base-page.component'
-import { LangService } from 'src/app/core/services/lang.service'
-import { SsrService } from 'src/app/core/services/ssr.service'
-
+import { BasePageComponent } from 'src/app/core/abstracts/base-page.component';
+import { LangService } from 'src/app/core/services/lang.service';
+import { SsrService } from 'src/app/core/services/ssr.service';
 
 @Component({
   selector: 'app-home',
@@ -18,9 +17,9 @@ export class HomeComponent extends BasePageComponent {
     protected override readonly metaService: Meta,
     protected override readonly langService: LangService,
     readonly ssrService: SsrService,
-    private readonly route: ActivatedRoute,
+    private readonly route: ActivatedRoute
   ) {
-    super(langService, titleService, metaService)
+    super(langService, titleService, metaService);
 
     // this.route.data.pipe(takeUntilDestroyed()).subscribe((data) => {
     //   if (data?.home) {
@@ -29,5 +28,11 @@ export class HomeComponent extends BasePageComponent {
 
     //   this.renderPageMeta()
     // })
+  }
+
+  onPresentation() {
+    const elementList = document.querySelectorAll('.' + 'presentation');
+    const element = elementList[0] as HTMLElement;
+    element.scrollIntoView({ behavior: 'smooth' });
   }
 }
