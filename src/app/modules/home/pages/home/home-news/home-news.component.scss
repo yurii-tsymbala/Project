@@ -171,7 +171,8 @@
       color: #ffffff;
     }
 
-    .input-container{
+    .input-container {
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -180,6 +181,16 @@
   
       .separator {
         width: 288px;
+      }
+
+      .error {
+        position: absolute;
+        top: 21px;
+        width: 100%;
+        padding-left: 0.5rem;
+        text-align: left;
+        color: black;
+        font-size: 10px;
       }
     }
   }
