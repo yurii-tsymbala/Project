@@ -1,7 +1,7 @@
 @import "bootstrap/scss/mixins";
 @import "src/assets/scss/theme-angular-starter1/bootstrap/variables";
 
-.modal-container {
+.popup {
   position: relative;
   display: flex;
   align-items: flex-start;
@@ -165,6 +165,14 @@
 }
 
 @include media-breakpoint-between(xs, tb) {
+  .popup {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 288px;
+    height: 249px;
+  }
   .news-container {
     display: flex;
     flex-direction: column;
