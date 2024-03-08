@@ -3,7 +3,7 @@
     <h1 class="title">Щотижневі новини</h1>
     <h4 class="subtitle">Підпишіться, щоб отримувати листи</h4>
   </div>
-  <form class="form-container" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <form class="form-container" [formGroup]="loginForm" (ngSubmit)="onSubmit(content)">
     <div class="input-container">
       <input
         class="email-input"
@@ -26,3 +26,31 @@
     </div>
   </form>
 </section>
+
+<ng-template  #content let-c="close" let-d="dismiss">
+  <div class="modal-dialog">
+    <div class="modal-content" style="width: 664px; height: 411px;">
+      <div class="modal-body">
+        <button class="close-btn" (click)="d('Cross click')"> 
+          <img src="/assets/img/icons/close.svg">
+        </button>
+          <div class="action-container">
+            <h1 class="header">Дякуємо</h1>
+            <div class="main">Ми відправили лист на вашу пошту.<br> 
+              Будь ласка, підтвердіть підписку.</div>
+              <button class="confirm-btn" (click)="c('Save click')"> 
+                ОК
+              </button>
+          </div>
+       </div>
+    </div>
+  </div>
+
+
+  
+  
+</ng-template>
+
+
+	
+

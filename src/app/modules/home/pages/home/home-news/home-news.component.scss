@@ -1,6 +1,65 @@
 @import "bootstrap/scss/mixins";
 @import "src/assets/scss/theme-angular-starter1/bootstrap/variables";
 
+.modal-container {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 664px;
+  height: 411px;
+}
+
+.action-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;  
+  gap: 43px;
+  margin-top: 52px;
+  margin-left: 64px;
+
+  .header {
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 56px;
+    letter-spacing: -0.02em;
+    text-align: left;
+    color: black;
+  }
+
+  .main {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: -0.02em;
+    text-align: left;
+    color: black;
+  }
+
+  .confirm-btn {
+    width: 192px;
+    height: 64px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: center;
+    border-radius: 48px;
+    background-color: #000000;
+    color: #ffffff;
+    margin-top: 17px;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  width: 37.59px;
+  height: 36px;
+  top: 16px;
+  right: 16px;
+}
+
 .news-container {
   display: flex;
   align-items: center;
@@ -103,7 +162,6 @@
       font-size: small;
     }
   }
-
 }
 
 @include media-breakpoint-between(xs, tb) {
@@ -179,7 +237,7 @@
       align-items: flex-start;
       justify-content: center;
       gap: 2px;
-  
+
       .separator {
         width: 288px;
       }
