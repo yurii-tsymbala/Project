@@ -20,7 +20,7 @@
       emailFormControl.touched))" class="error">* Введіть <strong>валідний email</strong></div>
 
     </div>
-    <button class="sub-btn" type="submit">Підписатись</button>
+    <button [disabled]="!loginForm.valid" class="sub-btn" type="submit">Підписатись</button>
     <div class="desc">
       Даю згоду на обробку та використання персональних даних
     </div>
@@ -29,7 +29,7 @@
 
 <ng-template  #content let-c="close" let-d="dismiss">
   <div class="modal-dialog">
-    <div class="modal-content" class="floka" style="width: 664px; height: 411px;">
+    <div class="modal-content" style="width: 664px; height: 411px;">
       <div class="modal-body">
         <button class="close-btn" (click)="d('Cross click')"> 
           <img src="/assets/img/icons/close.svg">

@@ -123,6 +123,12 @@
     letter-spacing: 0em;
     text-align: center;
     color: #ffffff;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.7;
+      cursor:not-allowed;
+    }
   }
 
   .input-container {
