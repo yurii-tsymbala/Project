@@ -26,14 +26,6 @@ export abstract class HomeApiService extends ApiService {
   checkIfEmailExists(data: string): Observable<boolean> {
     return this.subscribeWithEmail(data).pipe(
       delay(50),
-      map((value) => value.data.success),
-      map((value) => {
-        if (value === true) {
-          return true;
-        } else {
-          return false;
-        }
-      })
-    );
+      map((value) => value.data.success ? true : false));
   }
 }
