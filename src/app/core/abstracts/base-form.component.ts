@@ -59,13 +59,11 @@ export abstract class BaseFormComponent implements OnInit, OnDestroy {
   submitPrepare(): void {
     this.isSubmit = true
     this.formGroup.setErrors(null)
-    Object.keys(this.formGroup.getRawValue()).forEach((field) => {
-      this.formGroup.get(field)?.updateValueAndValidity({ emitEvent: this.isEmitOnPrepare })
-    })
     this.formGroup.markAllAsTouched()
   }
 
   submit(): void {    
+    this.submitPrepare();
     if (this.formGroup.valid) {
       this.isPending = true
       this.send()

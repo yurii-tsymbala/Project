@@ -45,7 +45,8 @@
         * Юзер вже існує з цим <strong>email</strong>
       </div>
     </div>
-    <button [disabled]="formGroup.invalid" class="sub-btn" type="submit">
+    <button [disabled]="emailFormControl.hasError('emailAlreadyExists') &&
+    (emailFormControl.dirty || emailFormControl.touched)" class="sub-btn" type="submit">
       Підписатись
     </button>
     <div class="desc">
