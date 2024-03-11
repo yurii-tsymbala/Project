@@ -26,25 +26,26 @@ export class HomeNewsComponent extends BaseFormComponent {
     config: NgbModalConfig,
     private modalService: NgbModal
   ) {
-    super();
-    config.backdrop = 'static';
-    config.keyboard = false;
+    super()
+    config.backdrop = true
+    config.keyboard = false
   }
 
   onSubmit(content: any): void {
     this.submit()
     this.sentSuccess.subscribe(() => {
+      this.modalService.dismissAll()
       this.modalService.open(content)
     })
   }
 
   override ngOnInit(): void {
-    this.configureForm();
+    this.configureForm()
   }
 
   override prepareRequest(): Observable<unknown> {
-    const emailInput = this.formGroup.value.emailInput;
-    return this.homeApiService.sendValidatedEmail(emailInput);
+    const emailInput = this.formGroup.value.emailInput
+    return this.homeApiService.sendValidatedEmail(emailInput)
   }
 
   private configureForm(): void {

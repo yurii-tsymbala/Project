@@ -345,12 +345,12 @@
 
 @include media-breakpoint-up(tb) {
   .sub-btn {
-    &:hover {
+    &:hover:enabled {
       opacity: 1;
       transform: scale(1.02);
     }
 
-    &:active {
+    &:active:enabled {
       opacity: 0.5;
     }
   }
