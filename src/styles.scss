@@ -1,3 +1,24 @@
 @import 'src/assets/scss/theme-angular-starter1/fonts';
 
 @import 'src/assets/scss/theme-angular-starter1';
+
+.d-block {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    --bs-modal-width: 664px;
+}
+
+.modal-content {
+    border-radius: 1px;
+}
+
+@include media-breakpoint-between(xs, tb) {
+    .modal {
+        --bs-modal-width: 288px;
+    }
+
+}

@@ -3,7 +3,13 @@
     <h1 class="title">Щотижневі новини</h1>
     <h4 class="subtitle">Підпишіться, щоб отримувати листи</h4>
   </div>
-  <form class="form-container" [formGroup]="loginForm" (ngSubmit)="onSubmit(content)">
+  <form
+    #form
+    class="form-container"
+    [formGroup]="formGroup"
+    (ngSubmit)="onSubmit(content)"
+    *ngIf="isPending !== true; else loadingForm"
+  >
     <div class="input-container">
       <input
         class="email-input"
@@ -14,39 +20,63 @@
       />
       <img class="separator" src="/assets/img/icons/separator.svg" />
 
-      <div *ngIf="(emailFormControl.hasError('email') && (emailFormControl.dirty ||
-      emailFormControl.touched))" class="error">* Введіть <strong>валідний email</strong></div>
-      <div *ngIf="(emailFormControl.hasError('required') && (emailFormControl.dirty ||
-      emailFormControl.touched))" class="error">* Введіть <strong>валідний email</strong></div>
-
+      <div
+        *ngIf="
+          emailFormControl.hasError('email') &&
+          (emailFormControl.dirty || emailFormControl.touched)
+        "
+        class="error"
+      >
+        * Введіть <strong>валідний email</strong>
+      </div>
+      <div
+        *ngIf="
+          emailFormControl.hasError('required') &&
+          (emailFormControl.dirty || emailFormControl.touched)
+        "
+        class="error"
+      >
+        * Введіть <strong>валідний email</strong>
+      </div>
+      <div
+        *ngIf="emailFormControl.hasError('emailAlreadyExists')"
+        class="error"
+      >
+        * Юзер вже існує з цим <strong>email</strong>
+      </div>
     </div>
-    <button [disabled]="!loginForm.valid" class="sub-btn" type="submit">Підписатись</button>
+    <button [disabled]="formGroup.invalid" class="sub-btn" type="submit">
+      Підписатись
+    </button>
     <div class="desc">
       Даю згоду на обробку та використання персональних даних
     </div>
   </form>
 </section>
 
-<ng-template  #content let-c="close" let-d="dismiss">
-  <div class="modal-dialog">
-    <div class="modal-content" style="width: 664px; height: 411px;">
-      <div class="modal-body">
-        <button class="close-btn" (click)="d('Cross click')"> 
-          <img src="/assets/img/icons/close.svg">
-        </button>
-          <div class="action-container">
-            <h1 class="header">Дякуємо</h1>
-            <div class="main">Ми відправили лист на вашу пошту.<br> 
-              Будь ласка, підтвердіть підписку.</div>
-              <button class="confirm-btn" (click)="c('Save click')"> 
-                ОК
-              </button>
-          </div>
-       </div>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-body">
+    <div class="action-container">
+      <button class="close-btn" (click)="d('Cross click')">
+        <img src="/assets/img/icons/close.svg" />
+      </button>
+      <h1 class="header">Дякуємо</h1>
+      <div class="main">
+        Ми відправили лист на вашу пошту. Будь ласка, підтвердіть підписку.
+      </div>
+      <button class="confirm-btn" (click)="c('Save click')">ОК</button>
     </div>
   </div>
 </ng-template>
 
+<ng-template #loading>
+  <div class="loader-wrapper">
+    <span class="loader"></span>
+  </div>
+</ng-template>
 
-	
-
+<ng-template #loadingForm>
+  <div class="loader-form-wrapper">
+    <span class="loader"></span>
+  </div>
+</ng-template>

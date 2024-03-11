@@ -65,8 +65,7 @@ export abstract class BaseFormComponent implements OnInit, OnDestroy {
     this.formGroup.markAllAsTouched()
   }
 
-  submit(): void {
-    this.submitPrepare()
+  submit(): void {    
     if (this.formGroup.valid) {
       this.isPending = true
       this.send()
@@ -89,7 +88,7 @@ export abstract class BaseFormComponent implements OnInit, OnDestroy {
   }
 
   onRequestSuccess(value: unknown): void {
-    this.sentSuccess.emit(value)
+    
     this.isSubmit = false
     this.isSuccess = true
     if (this.isResetOnSuccess) {
@@ -99,22 +98,22 @@ export abstract class BaseFormComponent implements OnInit, OnDestroy {
     if (this.isResetIsSuccess) {
       setTimeout(() => {
         this.isSuccess = false
-      }, 3000)
+        this.isPending = false
+        this.sentSuccess.emit(value)
+      }, 2000)
     }
   }
 
-  onRequestFailed(errorResponse: HttpErrorResponse): void {
+  onRequestFailed(errorResponse: HttpErrorResponse): void {  
     if (!environment.production) {
       // eslint-disable-next-line no-console
       console.log(errorResponse)
     }
-
-    this.setFormErrors(errorResponse)
     this.sentFailed.emit(this.formGroup.errors)
   }
 
   onRequestFinal(): void {
-    this.isPending = false
+    
     this.isSent = false
     if (this.formGroup.invalid) {
       this.scrollToError()
@@ -124,55 +123,9 @@ export abstract class BaseFormComponent implements OnInit, OnDestroy {
     this.sent.emit()
   }
 
-  /**
-   * Describes how to find validation error keys in object returned by backend
-   */
-  // TODO: set errorResponse: string | string[], upd LoginPupilFormComponent
-  setFormErrors(errorResponse: HttpErrorResponse): void {
-    const generalErrors: Record<string, boolean> = {}
-
-    // Nest Errors Handler
-    if (errorResponse.error && errorResponse.error.message) {
-      if (errorResponse.error.message.forEach) {
-        errorResponse.error.message.forEach((message: { property?: string } | string) => {
-          const property = (<{ property?: string }>message)?.property || <string>message
-
-          if (this.formGroup.get(property)) {
-            this.formGroup.get(property)?.setErrors({ invalid: true })
-          } else {
-            generalErrors[property] = true
-          }
-        })
-      } else {
-        generalErrors[errorResponse.error.message] = true
-      }
-    }
-
-    // Laravel Errors Handler
-    if (errorResponse.error?.errors) {
-      for (const [property, value] of Object.entries(errorResponse.error.errors)) {
-        if (this.formGroup.get(property.toString())) {
-          ;(<string[]>value).forEach((rule) => {
-            this.formGroup.get(property.toString())?.setErrors({ [rule]: true })
-          })
-        } else {
-          generalErrors[property.toString()] = true
-        }
-      }
-    }
-
-    if (errorResponse.status === 0 || errorResponse.status >= 400) {
-      if (!Object.keys(generalErrors)) {
-        generalErrors.server = true
-      }
-    }
-
-    this.formGroup.setErrors(generalErrors)
-  }
-
   scrollToError(): void {
     setTimeout(() => {
-      const invalidInput = this.elementRef.nativeElement.querySelector('.form-error > p')
+      const invalidInput = this.elementRef.nativeElement.querySelector('.error')
       if (invalidInput) {
         invalidInput.scrollIntoView({
           block: 'center',
